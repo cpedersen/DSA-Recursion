@@ -3,6 +3,6 @@
 // What is the input to each recursive call?:
 // What is the output of each recursive call?:
 
-const orgChart = function () {};
+const factorial = function () {};
 
-console.log(orgChart());
+console.log(factorial());

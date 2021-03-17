@@ -9,10 +9,11 @@
 //     return countSheep(num)
 
 const countSheep = function (num) {
-  // Base case
   if (num === 0) {
+    // Base case
     return "All sheep jumped over the fence";
   } else {
+    // Recursive case
     console.log(`${num} sheep jumped over the fence`);
     num--;
     return countSheep(num);

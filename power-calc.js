@@ -23,11 +23,10 @@ const powerCalc = function (base, exponent) {
     // Error case
     return "exponent should be >= 0";
   } else {
-    // Output
+    // Recursive case
     return base * powerCalc(base, exponent - 1);
   }
 };
 
 console.log(powerCalc(10, 2));
-console.log(powerCalc(10, -2));
-//console.log(powerCalc(10, 1));
+//console.log(powerCalc(10, -2));

@@ -40,43 +40,50 @@
 // What is the input to each recursive call?:
 // What is the output of each recursive call?:
 
-const solveMaze = function (row, column, directions, maze) {
-  if (maze[row][column] == "e") {
-    return directions;
+const navigateMaze = function (x, y, path, maze) {
+  if (maze[x][y] == "e") {
+    // Base Case
+    return path;
   }
 
-  if (column < maze[0].length - 1 && maze[row][column + 1] != "*") {
-    maze[row][column] = "*";
-    let newColumn = column + 1;
-    let newRow = row;
-    return (directions = "R" + solveMaze(newRow, newColumn, directions, maze));
+  // All of the rest are recursive cases...
+
+  // Move Right
+  if (y < maze[0].length - 1 && maze[x][y + 1] != "*") {
+    maze[x][y] = "*";
+    let newY = y + 1;
+    let newX = x;
+    return (path = "R" + navigateMaze(newX, newY, path, maze));
   }
 
-  if (row < maze.length - 1 && maze[row + 1][column] != "*") {
-    maze[row][column] = "*";
-    let newColumn = column;
-    let newRow = row + 1;
-    return (directions = "D" + solveMaze(newRow, newColumn, directions, maze));
+  // Move Down
+  if (x < maze.length - 1 && maze[x + 1][y] != "*") {
+    maze[x][y] = "*";
+    let newY = y;
+    let newX = x + 1;
+    return (path = "D" + navigateMaze(newX, newY, path, maze));
   }
 
-  if (column > 0 && maze[row][column - 1] != "*") {
-    maze[row][column] = "*";
-    let newColumn = column - 1;
-    let newRow = row;
-    return (directions = "L" + solveMaze(newRow, newColumn, directions, maze));
+  // Move Left
+  if (y > 0 && maze[x][y - 1] != "*") {
+    maze[x][y] = "*";
+    let newY = y - 1;
+    let newX = x;
+    return (path = "L" + navigateMaze(newX, newY, path, maze));
   }
 
-  if (row > 0 && maze[row - 1][column] != "*") {
-    maze[row][column] = "*";
-    let newColumn = column;
-    let newRow = row - 1;
-    return (directions = "U" + solveMaze(newRow, newColumn, directions, maze));
+  // Move Up
+  if (x > 0 && maze[x - 1][y] != "*") {
+    maze[x][y] = "*";
+    let newY = y;
+    let newX = x - 1;
+    return (path = "U" + navigateMaze(newX, newY, path, maze));
   }
 };
 
-const row = 0;
-const column = 0;
-const directions = "";
+const x = 0;
+const y = 0;
+const path = "";
 /*const maze = [
   [" ", " ", " "],
   [" ", "*", " "],
@@ -91,7 +98,7 @@ let maze = [
   [" ", " ", " ", " ", " ", " ", "e"],
 ];
 
-console.log("row: ", row);
-console.log("column: ", column);
+console.log("x: ", x);
+console.log("y: ", y);
 console.log("maze: ", maze);
-console.log("Solution: ", solveMaze(row, column, directions, maze));
+console.log("Solution: ", navigateMaze(x, y, path, maze));

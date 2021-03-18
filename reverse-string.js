@@ -21,7 +21,12 @@ const reverseString = function (string) {
   } else {
     // Recursive case
     // (New string is returned and saved to string)
+    console.log("-------------");
+    console.log("part 1: ", reverseString(string.substr(1)));
+    console.log("part 2: ", string.charAt(0));
+    console.log("string: ", string);
     return reverseString(string.substr(1)) + string.charAt(0);
+    console.log("-------------");
   }
 };
 

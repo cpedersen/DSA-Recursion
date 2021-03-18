@@ -23,6 +23,10 @@ const nthTriangularNum = function (num) {
     return num;
   } else {
     // Recursive case
+    console.log("------------------------------");
+    console.log("num: ", num);
+    console.log("call function: ", nthTriangularNum(num - 1));
+    console.log("total: ", num + nthTriangularNum(num - 1));
     return num + nthTriangularNum(num - 1);
   }
 };

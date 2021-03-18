@@ -52,3 +52,12 @@ console.log(input, "=>", stringSplitter(input, "/")); //
 
 input = "02/20/2020";
 console.log(input, "=>", stringSplitter(input, "/"));
+
+/* More elegant solution:
+function split(str, sep) {
+    var idx = str.indexOf(sep);
+    if (idx == -1) 
+        return [str];
+    return [str.slice(0, idx)].concat(split(str.slice(idx + sep.length), sep))
+}
+console.log(split('02/20/2020', '/')); */

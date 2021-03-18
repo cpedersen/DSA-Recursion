@@ -16,6 +16,9 @@ const printOrgChart = function (org, indent = 0) {
     // Recursive case
     printOrgChart(org[key], indent + 4);
   }
+
+  // Base case
+  // When we are outside the loop
 };
 
 const organization = {

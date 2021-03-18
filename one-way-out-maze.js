@@ -40,6 +40,7 @@
 // What is the input to each recursive call?:
 // What is the output of each recursive call?:
 
+/* EFFORT 1
 const oneWayOutMaze = function (maze, x = 0, y = 0, plotPoints = "") {
   if (maze[x] && maze[x][y] && maze[x][y] === "e") {
     return plotPoints;
@@ -57,21 +58,17 @@ const oneWayOutMaze = function (maze, x = 0, y = 0, plotPoints = "") {
   console.log("plotPoints: ", plotPoints);
 };
 
-const x = 3;
-const y = 3;
-const plotPoints = x * y;
+const num = 3;
 const maze = [
   [" ", " ", " "],
   [" ", "*", " "],
   [" ", " ", "e"],
 ];
-console.log("x: ", y);
-console.log("y: ", y);
-console.log("maze: ", maze);
-console.log("plotPoints: ", plotPoints);
+console.log("Maze: ", maze);
 console.log("Solution: ", oneWayOutMaze(maze));
+*/
 
-/* 
+/* EFFORT 2
 const oneWayOutMaze = function (maze, x = 0, y = 0, plotPoints = "") {
   if (maze[x] && maze[x][y] && maze[x][y] === "e") {
     return plotPoints;
@@ -88,4 +85,83 @@ const oneWayOutMaze = function (maze, x = 0, y = 0, plotPoints = "") {
   oneWayOutMaze(maze, x, y - 1, "U" + plotPoints);
   console.log("plotPoints: ", plotPoints);
 };
+*/
+
+// EFFORT 3
+/*const oneWayOutMaze = function (maze, num) {
+  this.maze = maze;
+  let path = "";
+  function navigate(column, row) {
+    if (this.maze[column][row] == 2) {
+      console.log("We solved the maze at (" + column + ", " + row + ")");
+    } else if (this.maze[column][row] == 1) {
+      console.log("At valid position (" + column + ", " + row + ")");
+      this.maze[column][row] = num;
+
+      // Right
+      if (column < this.maze.length - 1) {
+        navigate(column + 1, row);
+        path.concat("R");
+      }
+
+      // Down
+      if (row < this.maze[column].length - 1) {
+        navigate(column, row + 1);
+        path.concat("D");
+      }
+
+      // Left
+      if (column > 0) {
+        navigate(column - 1, row);
+        path.concat("L");
+      }
+
+      // Up
+      if (row > 0) {
+        navigate(column, row - 1);
+        path.concat("U");
+      }
+    }
+  }
+};
+
+console.log("Number of rows and columns: ", num);
+console.log("Maze: ", maze);
+console.log("Solution: ", oneWayOutMaze(maze, num));
+*/
+
+// EFFORT 4
+/*const oneWayOutMaze = function (map, x, y) {
+  if (x < 0 || x > map[0].length - 1 || y < 0 || y > map.length - 1)
+    return false; //if it is outside of map
+  if (map[y][x] == 0) return false; //it is not open
+
+  if (x == goalx && y == goaly) {
+    console.log("Reached goal at: " + x + ":" + y);
+    return true; // if it is the goal (exit point)
+  }
+
+  if (map[y][x] == 9 || map[y][x] == 8) return false;
+
+  console.log("Im here at: " + x + ":" + y);
+
+  map[y][x] = 9; //here marking x,y position as part of solution path outlined by "9"
+
+  if (findpath(x + 1, y)) return true;
+  if (findpath(x, y + 1)) return true;
+  if (findpath(x, y - 1)) return true;
+  if (findpath(x - 1, y)) return true;
+
+  return false;
+};
+
+const x = 2;
+const y = 2;
+const maze = [
+  [" ", " ", " "],
+  [" ", "*", " "],
+  [" ", " ", "e"],
+];
+console.log("Maze: ", maze);
+console.log("Solution: ", oneWayOutMaze(maze, x, y));
 */

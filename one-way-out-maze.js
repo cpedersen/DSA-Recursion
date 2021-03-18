@@ -37,8 +37,9 @@
 // What is the input to the program?: num X axis, num Y axis
 // What is the output of the program?: Characters indicating
 // Left (L), Right (R), Up (U), Down (D).
-// What is the input to each recursive call?:
+// What is the input to each recursive call?: newX, newY, path, maze
 // What is the output of each recursive call?:
+// path = "R" + navigateMaze(newX, newY, path, maze)
 
 const navigateMaze = function (x, y, path, maze) {
   if (maze[x][y] == "e") {
@@ -98,7 +99,5 @@ let maze = [
   [" ", " ", " ", " ", " ", " ", "e"],
 ];
 
-console.log("x: ", x);
-console.log("y: ", y);
 console.log("maze: ", maze);
 console.log("Solution: ", navigateMaze(x, y, path, maze));

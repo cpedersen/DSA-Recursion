@@ -4,7 +4,7 @@
 //    2 Another sheep jumped
 //    1 Another sheep jumped
 //    All sheep jumped over the fence
-// What is the input to each recursive call?: num
+// What is the input to each recursive call?: countSheep(num)
 // What is the output of each recursive call?:
 //     return countSheep(num)
 

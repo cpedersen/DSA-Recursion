@@ -34,12 +34,12 @@
 
 // For the above maze, a possible exit path can be RRDDLLDDRRRRRR
 
-// What is the input to the program?: path, maze
-// What is the output of the program?: Characters indicating
+// What is the input to the program?: x, y, path, maze
+// What is the output of the program?: String with characters indicating
 // Left (L), Right (R), Up (U), Down (D).
-// What is the input to each recursive call?: x, y, path, maze
+// What is the input to each recursive call?: navigateMaze(x, y, path, maze)
 // What is the output of each recursive call?:
-// path = "R" + navigateMaze(newX, newY, path, maze)
+// return dir + navigateMaze(newX, newY, path, maze)
 
 const navigateMaze = function (x, y, path, maze) {
   if (maze[x][y] == "e") {
